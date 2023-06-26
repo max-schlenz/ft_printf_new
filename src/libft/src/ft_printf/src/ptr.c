@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:13:31 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 08:18:29 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/26 09:00:22 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	mod_ptr(t_data *data)
 	arg = (unsigned long)va_arg(data->args, void *);
 	if (arg)
 	{
-		*str = ptr_to_hex(arg, 1);
+		str = ptr_to_hex(arg, 1);
 		if (str)
 		{
 			putstr_count(str, data);

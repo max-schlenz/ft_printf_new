@@ -40,4 +40,8 @@ int main()
 	
 	// printf(" (%d)\n", printf(" %c %c %c ", 0, '1', '2'));
 	// printf(" (%d)\n", ft_printf(" %c %c %c ", 0, '1', '2'));
+
+	printf("|%25s|\n", "text");    // Without the '-' flag
+	printf("|%-5s|\n", "text");   // With the '-' flag
+
 }
