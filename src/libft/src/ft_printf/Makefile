@@ -6,7 +6,7 @@
 #    By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 12:57:52 by mschlenz          #+#    #+#              #
-#    Updated: 2023/06/25 11:39:39 by mschlenz         ###   ########.fr        #
+#    Updated: 2023/06/26 12:37:57 by mschlenz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRC			= 	$(NAME)	\
 				string \
 				uint \
 				utils \
-				uitoa
+				uitoa \
+				bonus/padding
 
 SRC_PATH	=	$(addsuffix .c, $(addprefix $(SRC_DIR), $(SRC)))
 OBJ_PATH	=	$(addsuffix .o, $(addprefix $(OBJ_DIR), $(SRC)))
@@ -42,12 +43,14 @@ INCLUDES	= 	-I $(INC_DIR)
 
 all: create_dirs $(OBJ_PATH)
 
+bonus: all
+
 obj/%.o : src/%.c message
 	@gcc $(FLAGS) $(INCLUDES) -c $< -o $@
 	@ar -ruc $(LIB_DIR)libftprintf.a $@ 2>/dev/null
 
 create_dirs:
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/bonus
 	@mkdir -p $(LIB_DIR)
 
 .INTERMEDIATE: message
@@ -69,4 +72,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

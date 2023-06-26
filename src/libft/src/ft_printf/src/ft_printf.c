@@ -6,14 +6,42 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 15:02:26 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 08:19:21 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/26 13:05:31 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
+
+void	modifier_bonus(char mod, const char* fmt, int *i, t_data *data)
+{
+	if (mod == '-')
+	{
+		(*i)++;
+		padding(fmt, i, data);
+		data->left_allign = true;
+	}
+	else if (mod == '0')
+	{
+		(*i)++;
+		padding(fmt, i, data);
+		data->zero_pad = true;
+		data->right_allign = true;
+	}
+	else if (ft_isdigit(mod))
+	{		
+		padding(fmt, i, data);
+		data->right_allign = true;
+	}
+	else if (mod == '.')
+	{
+		
+	}
+}
 
 void	modifier(char mod, t_data *data)
 {
+	// printf("mod: %c\n", mod);
 	if (mod == 'c')
 		mod_char(data);
 	else if (mod == 's')
@@ -44,8 +72,10 @@ int	ft_printf(const char *fmt, ...)
 	{
 		if (fmt[i] == '%' && fmt[i + 1])
 		{
-			modifier(fmt[i + 1], &data);
-			i += 2;
+			i ++;
+			modifier_bonus(fmt[i], fmt, &i, &data);
+			modifier(fmt[i], &data);
+			i ++;
 		}
 		else
 			putchar_count(fmt[i++], &data);

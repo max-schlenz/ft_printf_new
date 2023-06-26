@@ -6,7 +6,7 @@
 #    By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 12:57:52 by mschlenz          #+#    #+#              #
-#    Updated: 2023/06/25 11:38:16 by mschlenz         ###   ########.fr        #
+#    Updated: 2023/06/26 12:38:12 by mschlenz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,8 @@ LINKER			=	-L ./ -l ftprintf
 FLAGS			= 	#-fsanitize=address -g #-Wall -Wextra -Werror
 
 all: $(LIB_FILES)
+
+bonus: all
 
 exec: $(NAME)
 

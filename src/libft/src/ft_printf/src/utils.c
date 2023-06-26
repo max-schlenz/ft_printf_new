@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:13:22 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 08:14:04 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:44:23 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,42 @@ void	putchar_count(char c, t_data *data)
 void	putstr_count(char *str, t_data *data)
 {
 	int	i;
-
+	int	len;
+	int	pad;
+	
 	i = 0;
+	len = ft_strlen(str);
+	pad = 0;
+
+	if (data->right_allign)
+	{
+		if (data->width > len)
+			pad = data->width - len;
+		while (i < pad)
+		{
+			if (data->zero_pad)
+				putchar_count('0', data);
+			else
+				putchar_count(' ', data);
+			i++;
+		}
+	}
+	
 	while (str && *str)
 		putchar_count(*str++, data);
+
+	if (data->left_allign)
+	{
+		if (data->width > len)
+			pad = data->width - len;
+		while (i < pad)
+		{
+			if (data->zero_pad)
+				putchar_count('0', data);
+			else
+				putchar_count(' ', data);
+			i++;
+		}
+	}
+	
 }

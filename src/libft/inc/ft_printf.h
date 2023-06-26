@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 14:33:31 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 08:19:46 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/26 13:04:45 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,18 @@
 # include <stdarg.h>
 # include "libft.h"
 
+# define PRNT printf("here\n");
+
 typedef struct s_data
 {
 	unsigned int	count_chars;
 	va_list			args;
+	bool			left_allign;
+	bool			right_allign;
+	bool			zero_pad;
+	bool			precision;
+	int				width_prec;
+	int				width;
 }	t_data;
 
 int		ft_printf(const char *fmt, ...);
@@ -34,6 +42,8 @@ void	mod_hex(t_data *data, bool uppercase);
 char	*ft_uitoa(unsigned int n);
 void	putchar_count(char c, t_data *data);
 void	putstr_count(char *str, t_data *data);
+
+void	padding(const char* fmt, int *i, t_data *data);
 
 // int		print_hex(va_list args, int lowercase);
 // int		print_char(va_list args);
