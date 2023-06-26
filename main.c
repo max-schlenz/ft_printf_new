@@ -41,16 +41,31 @@ int main()
 	// // printf(" (%d)\n", printf(" %c %c %c ", 0, '1', '2'));
 	// // printf(" (%d)\n", ft_printf(" %c %c %c ", 0, '1', '2'));
 
-	// printf("|%-25s|\n", "text");
-	// ft_printf("|%-25s|\n", "text");
+	printf("|%-25s|\n", "text");
+	ft_printf("|%-25s|\n", "text");
 
-	// printf("|%25d|\n", 42);
-	// ft_printf("|%25d|\n", 42);
+	printf("|%25d|\n", 42);
+	ft_printf("|%25d|\n", 42);
 
-	// printf("|%05d|\n", 42);
-	// ft_printf("|%05d|\n", 42);
-
-	printf("|%5d|\n", 42);
+	printf("|%05d|\n", 42);
 	ft_printf("|%05d|\n", 42);
+
+	printf("|%05s|\n", "42");
+	ft_printf("|%05s|\n", "42");
+
+	printf("|%5.5d|\n", 1);    // prints: |     |
+	ft_printf("|%5.5d|\n", 1);    // prints: |     |
+
+	printf("|%050s|\n", "hello");  
+	ft_printf("|%050s|\n", "hello");    
+
+	printf("|%.5d|\n", 420000);    // prints: |00042|
+	ft_printf("|%.5d|\n", 420000);    // prints: |00042|
+
+	printf("|%5.0d|\n", 0);    // prints: |     |
+	ft_printf("|%5.0d|\n", 0);    // prints: |     |
+
+	printf("|%05.0d|\n", 0);   // prints: |     |
+	ft_printf("|%05.0d|\n", 0);   // prints: |     |
 
 }

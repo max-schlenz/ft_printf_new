@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 15:02:26 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 13:05:31 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/26 14:17:36 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,30 @@
 
 void	modifier_bonus(char mod, const char* fmt, int *i, t_data *data)
 {
-	if (mod == '-')
+	if (fmt[*i] == '-')
 	{
 		(*i)++;
 		padding(fmt, i, data);
 		data->left_allign = true;
 	}
-	else if (mod == '0')
+	else if (fmt[*i] == '0')
 	{
 		(*i)++;
 		padding(fmt, i, data);
 		data->zero_pad = true;
 		data->right_allign = true;
 	}
-	else if (ft_isdigit(mod))
+	else if (ft_isdigit(fmt[*i]))
 	{		
 		padding(fmt, i, data);
 		data->right_allign = true;
 	}
-	else if (mod == '.')
+	if (fmt[*i] == '.')
 	{
-		
+		(*i)++;
+		padding_prec(fmt, i, data);
+		data->zero_pad = true;
+		data->right_allign = true;
 	}
 }
 

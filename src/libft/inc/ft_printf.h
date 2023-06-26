@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 14:33:31 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 13:04:45 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/26 14:17:30 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	putchar_count(char c, t_data *data);
 void	putstr_count(char *str, t_data *data);
 
 void	padding(const char* fmt, int *i, t_data *data);
+void	padding_prec(const char* fmt, int *i, t_data *data);
 
 // int		print_hex(va_list args, int lowercase);
 // int		print_char(va_list args);
