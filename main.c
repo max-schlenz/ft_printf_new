@@ -62,8 +62,8 @@ int main()
 	// printf("|%.5d|\n", 420000);    // prints: |00042|
 	// ft_printf("|%.5d|\n", 420000);    // prints: |00042|
 
-	// printf("|%5.0d|\n", 0);    // prints: |     |
-	// ft_printf("|%5.0d|\n", 0);    // prints: |     |
+	printf("|%5.0d|\n", 0);    // prints: |     |
+	ft_printf("|%5.0d|\n", 0);    // prints: |     |
 
 	// printf("|%05.0d|\n", 0);   // prints: |     |
 	// ft_printf("|%05.0d|\n", 0);   // prints: |     |
@@ -83,14 +83,12 @@ int main()
 	// printf("%X\n", 42);
 	// ft_printf("%X\n", 42);
 
-	printf("|%5s|\n", "0");
-	printf("|%5s|\n", "10");
-	printf("|%5s|\n", "100000");
-	ft_printf("|%5s|\n", "100000");
+	// printf("|%5s|\n", "100000");
+	// ft_printf("|%5s|\n", "100000");
 
 	// printf("| %c %c %c |\n", '0', 0, '1');
 	// ft_printf("| %c %c %c |\n", '0', 0, '1');
 
-	printf("| %-1c> %-2c> %-3c> |\n", 0, 0, 1);
-	ft_printf("| %-1c> %-2c> %-3c> |\n", 0, 0, 1);
+	// printf("| %-1c> %-2c> %-3c> |\n", 0, 0, 1);
+	// ft_printf("| %-1c> %-2c> %-3c> |\n", 0, 0, 1);
 }
