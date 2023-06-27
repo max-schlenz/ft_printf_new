@@ -53,8 +53,8 @@ int main()
 	// printf("|%05s|\n", "42");
 	// ft_printf("|%05s|\n", "42");
 
-	// printf("|%5.5d|\n", 1);    // prints: |     |
-	// ft_printf("|%5.5d|\n", 1);    // prints: |     |
+	printf("|%5.5d|\n", 1);    // prints: |     |
+	ft_printf("|%5.5d|\n", 1);    // prints: |     |
 
 	// printf("|%050s|\n", "hello");  
 	// ft_printf("|%050s|\n", "hello");    
@@ -62,8 +62,8 @@ int main()
 	// printf("|%.5d|\n", 420000);    // prints: |00042|
 	// ft_printf("|%.5d|\n", 420000);    // prints: |00042|
 
-	printf("|%5.0d|\n", 0);    // prints: |     |
-	ft_printf("|%5.0d|\n", 0);    // prints: |     |
+	// printf("|%5.0d|\n", 0);    // prints: |     |
+	// ft_printf("|%5.0d|\n", 0);    // prints: |     |
 
 	// printf("|%05.0d|\n", 0);   // prints: |     |
 	// ft_printf("|%05.0d|\n", 0);   // prints: |     |

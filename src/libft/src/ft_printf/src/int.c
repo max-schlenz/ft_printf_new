@@ -6,32 +6,25 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:13:34 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/27 10:59:04 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/27 11:25:25 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	mod_int(t_data *data)
+void mod_int(t_data *data)
 {
-	int		i;
-	int		arg;
-	char	*str;
+    int arg = va_arg(data->args, int);
+    char *str;
 
-	i = 0;
-	arg = va_arg(data->args, int);
-	str = ft_itoa(arg);
-	if (str)
-	{
-		if (data->precision)
-		{
-			while (i < data->width_prec)
-			{
-				putchar_count('0', data);
-				i++;
-			}
-		}
-		putstr_count(str, data);
-		free(str);
-	}
+    if (arg == 0 && data->precision && data->width_prec == 0)
+        str = ft_strdup("");
+    else
+        str = ft_itoa(arg);
+
+    if (str)
+    {
+        putstr_count(str, data);
+        free(str);
+    }
 }
