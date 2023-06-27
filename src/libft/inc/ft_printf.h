@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 14:33:31 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 14:17:30 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/27 09:25:29 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdbool.h>
 # include <stdarg.h>
+# include <stdio.h>
 # include "libft.h"
 
 # define PRNT printf("here\n");
@@ -27,6 +28,7 @@ typedef struct s_data
 	bool			right_allign;
 	bool			zero_pad;
 	bool			precision;
+	bool			hash;
 	int				width_prec;
 	int				width;
 }	t_data;

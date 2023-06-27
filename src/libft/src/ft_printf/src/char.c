@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:13:25 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 08:19:27 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/27 09:32:11 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,16 @@
 void	mod_char(t_data *data)
 {
 	char	arg;
+	char	str[2];
 
+	data->zero_pad = false;
 	arg = va_arg(data->args, int);
-	putchar_count(arg, data);
+	if (arg)
+	{
+		str[0] = arg;
+		str[1] = '\0';
+		putstr_count(str, data);
+	}
+	else
+		putchar_count(arg, data);
 }

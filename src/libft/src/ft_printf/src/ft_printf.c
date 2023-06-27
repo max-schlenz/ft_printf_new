@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 15:02:26 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 14:17:36 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/27 08:31:08 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void	modifier_bonus(char mod, const char* fmt, int *i, t_data *data)
 		(*i)++;
 		padding(fmt, i, data);
 		data->left_allign = true;
+	}
+	else if (fmt[*i] == '#')
+	{
+		(*i)++;
+		data->hash = true;
 	}
 	else if (fmt[*i] == '0')
 	{

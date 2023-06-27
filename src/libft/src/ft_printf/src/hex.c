@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:19:14 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 08:19:15 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/27 08:29:41 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,14 @@ void	mod_hex(t_data *data, bool uppercase)
 	unsigned int	to_hex;
 	char			*str;
 
+	if (data->hash)
+	{
+		putchar_count('0', data);
+		if (uppercase)
+			putchar_count('x', data);
+		else
+			putchar_count('X', data);
+	}
 	to_hex = (unsigned int)va_arg(data->args, int);
 	if (!to_hex)
 		putchar_count('0', data);

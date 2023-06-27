@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:13:22 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 12:44:23 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/27 09:31:40 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ void	putstr_count(char *str, t_data *data)
 	
 	i = 0;
 	len = ft_strlen(str);
+	// if (str[0] <= 32)
+	// 	len = 0;
+	// printf("stlen: %d|\n", (int)str[0]);
 	pad = 0;
 
 	if (data->right_allign)
@@ -58,5 +61,4 @@ void	putstr_count(char *str, t_data *data)
 			i++;
 		}
 	}
-	
 }
