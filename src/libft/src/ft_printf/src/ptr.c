@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:13:31 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 09:00:22 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/27 12:51:20 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	mod_ptr(t_data *data)
 
 	putchar_count('0', data);
 	putchar_count('x', data);
+	data->width -= 2;
 	arg = (unsigned long)va_arg(data->args, void *);
 	if (arg)
 	{

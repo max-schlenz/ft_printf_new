@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 15:02:26 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/27 10:58:05 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/27 12:25:29 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	modifier_bonus(char mod, const char* fmt, int *i, t_data *data)
 	{
 		(*i)++;
 		padding_prec(fmt, i, data);
-		// data->zero_pad = true;
+		data->zero_pad = true;
 		data->right_allign = true;
 	}
 }

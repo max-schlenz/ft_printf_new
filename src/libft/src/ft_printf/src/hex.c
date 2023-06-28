@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:19:14 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/27 08:29:41 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/28 09:52:07 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ static char	*uint_to_hex(unsigned int hex, bool uppercase)
 
 	i = 0;
 	len_hex = uint_to_hex_len(hex);
+	// printf(">>%d\n", len_hex);
+	if (len_hex < 0)
+		return NULL;
 	str_hex = ft_calloc(len_hex + 2, sizeof(char));
 	while (hex != 0)
 	{
@@ -50,26 +53,61 @@ static char	*uint_to_hex(unsigned int hex, bool uppercase)
 	return (str_hex);
 }
 
-void	mod_hex(t_data *data, bool uppercase)
+void mod_hex(t_data *data, bool uppercase)
 {
-	unsigned int	to_hex;
-	char			*str;
+    unsigned int to_hex = (unsigned int)va_arg(data->args, int);
+    char *str = NULL;
+    char *prefix = NULL;
 
-	if (data->hash)
-	{
-		putchar_count('0', data);
-		if (uppercase)
-			putchar_count('x', data);
-		else
-			putchar_count('X', data);
-	}
-	to_hex = (unsigned int)va_arg(data->args, int);
-	if (!to_hex)
-		putchar_count('0', data);
-	str = uint_to_hex(to_hex, uppercase);
-	if (str)
-	{
-		putstr_count(str, data);
-		free(str);
-	}
+    if (data->hash)
+    {
+        prefix = uppercase ? "0X" : "0x";
+    }
+
+    str = uint_to_hex(to_hex, uppercase);
+    if (str)
+    {
+        // If the # flag is present, concatenate the prefix and the number
+        if (prefix)
+        {
+            char *temp = str;
+            str = ft_strjoin(prefix, str);  // Assume ft_strjoin allocates a new string
+            free(temp);
+        }
+
+        putstr_count(str, data);
+        free(str);
+    }
+    else if (!to_hex)
+    {
+        // If the number is 0, output 0 with putstr_count to handle padding and field width
+        putstr_count("0", data);
+    }
 }
+
+
+// void	mod_hex(t_data *data, bool uppercase)
+// {
+// 	unsigned int	to_hex;
+// 	char			*str;
+
+// 	if (data->hash)
+// 	{
+// 		putchar_count('0', data);
+// 		if (uppercase)
+// 			putchar_count('X', data);
+// 		else
+// 			putchar_count('x', data);
+// 	}
+// 	to_hex = (unsigned int)va_arg(data->args, int);
+// 	if (!to_hex)
+// 	{
+// 		putchar_count('0', data);
+// 	}
+// 	str = uint_to_hex(to_hex, uppercase);
+// 	if (str)
+// 	{
+// 		putstr_count(str, data);
+// 		free(str);
+// 	}
+// }

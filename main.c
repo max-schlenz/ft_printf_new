@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdarg.h>
 #include "src/libft/inc/libft.h"
-
+#include <limits.h>
 int main()
 {
 	// char *str = "hello";
@@ -53,8 +53,8 @@ int main()
 	// printf("|%05s|\n", "42");
 	// ft_printf("|%05s|\n", "42");
 
-	printf("|%5.5d|\n", 1);    // prints: |     |
-	ft_printf("|%5.5d|\n", 1);    // prints: |     |
+	// printf("|%5.5d|\n", 1);    // prints: |     |
+	// ft_printf("|%5.5d|\n", 1);    // prints: |     |
 
 	// printf("|%050s|\n", "hello");  
 	// ft_printf("|%050s|\n", "hello");    
@@ -91,4 +91,41 @@ int main()
 
 	// printf("| %-1c> %-2c> %-3c> |\n", 0, 0, 1);
 	// ft_printf("| %-1c> %-2c> %-3c> |\n", 0, 0, 1);
+
+	// printf("%d:\n", printf("| %c %c %c |\n", '0', 0, '1'));
+	// printf("%d:\n", ft_printf("| %c %c %c |\n", '0', 0, '1'));
+
+	// printf("%d:\n", printf(" %-20p ", 1));
+	// printf("%d:\n", ft_printf(" %-20p ", 1));
+
+	// printf("|%d:|\n", printf(" %-2x \n", -1));
+	// printf("|%d:|\n", ft_printf(" %-2x \n", -1));
+
+	// printf(">%d<\n", printf("| %-10X |\n", 0));
+	// printf(">%d<\n", ft_printf("| %-10X |\n", 0));
+
+	// printf("%d\n", printf(" %x ", 0));
+	// printf("%d\n", ft_printf(" %x ", 0));
+
+	// printf("%d\n", printf(" %x ", 1));
+	// printf("%d\n", ft_printf(" %x ", 1));
+
+	// printf("%d\n", printf(" %04d ", -14));
+	// printf("%d\n", ft_printf(" %04d ", -14));
+
+	// printf("%d\n", printf(" %d ", -11));
+	// printf("%d\n", ft_printf(" %d ", -11));
+
+	// printf("%d\n", printf(" %d ", INT_MIN));
+	// printf("%d\n", ft_printf(" %d ", INT_MIN));
+
+	// printf("%d\n", printf(" %04d ", -14));
+	// printf("%d\n", ft_printf(" %04d ", -14));
+
+	// printf("%d\n", printf("%1s", ""));
+	// printf("%d\n", ft_printf("%1s", ""));
+
+	printf("%d\n", printf(" %.s ", "-"));
+	printf("%d\n", ft_printf(" %.s ", "-"));
+
 }

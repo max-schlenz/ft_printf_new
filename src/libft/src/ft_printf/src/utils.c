@@ -6,11 +6,12 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:13:22 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/27 11:20:39 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/28 10:49:52 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <limits.h>
 
 void	putchar_count(char c, t_data *data)
 {
@@ -23,11 +24,34 @@ void putstr_count(char *str, t_data *data)
     int len = ft_strlen(str);
     int pad = 0;
 
+	bool	is_neg = false;
+	
+	// char *tmp;
+
+	if (str[0] == '-')
+	{
+		is_neg = true;
+		str = str + 1;
+		// free(str);
+		// str = tmp;
+		len--;
+		data->width--;
+	}
+
+	// printStruct(data);
+
     if (data->width > len)
         pad = data->width - len;
 
+	if (!data->right_allign && is_neg)
+		putchar_count('-', data);
+	else if (data->right_allign && is_neg)
+		putchar_count('-', data);
+
     if (data->right_allign && pad > 0)
     {
+		
+	
         while (pad--)
         {
             if (data->zero_pad)
@@ -37,7 +61,6 @@ void putstr_count(char *str, t_data *data)
         }
     }
 
-    // Write the precision zero padding
     if (data->precision && data->width_prec > len)
     {
         int precision_pad = data->width_prec - len;
@@ -45,7 +68,6 @@ void putstr_count(char *str, t_data *data)
             putchar_count('0', data);
     }
 
-    // Write the string itself
     while (*str)
         putchar_count(*str++, data);
 
@@ -54,4 +76,42 @@ void putstr_count(char *str, t_data *data)
         while (pad--)
             putchar_count(' ', data);
     }
+}
+
+void	printStruct(t_data *data)
+{
+	printf("count_chars: %u\n", data->count_chars);
+	printf("left_allign: %s\n", data->left_allign ? "true" : "false");
+	printf("right_allign: %s\n", data->right_allign ? "true" : "false");
+	printf("zero_pad: %s\n", data->zero_pad ? "true" : "false");
+	printf("precision: %s\n", data->precision ? "true" : "false");
+	printf("hash: %s\n", data->hash ? "true" : "false");
+	printf("width_prec: %d\n", data->width_prec);
+	printf("width: %d\n", data->width);
+}
+
+long	ft_atol(const char *str)
+{
+	int			i;
+	long long	r;
+	int			is_neg;
+
+	i = 0;
+	r = 0;
+	is_neg = 1;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v' \
+		|| str[i] == '\f' || str[i] == '\r')
+			i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			is_neg = -1;
+	i++;
+	}
+	while (ft_isdigit(str[i]))
+		r = r * 10 + str[i++] - '0';
+	if (!ft_isdigit(str[0]) || !ft_isdigit(str[i - 1]) || str[i] != '\0' \
+		|| r > INT_MAX || r < INT_MIN)
+		return (-2147483649);
+	return (r * is_neg);
 }

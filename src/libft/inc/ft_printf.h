@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 14:33:31 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/27 09:25:29 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/28 10:36:14 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_data
 	int				width;
 }	t_data;
 
+void	printStruct(t_data *data);
+
 int		ft_printf(const char *fmt, ...);
 void	mod_char(t_data *data);
 void	mod_string(t_data *data);
@@ -47,6 +49,7 @@ void	putstr_count(char *str, t_data *data);
 
 void	padding(const char* fmt, int *i, t_data *data);
 void	padding_prec(const char* fmt, int *i, t_data *data);
+long	ft_atol(const char *str);
 
 // int		print_hex(va_list args, int lowercase);
 // int		print_char(va_list args);
