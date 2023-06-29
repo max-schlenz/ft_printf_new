@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:13:22 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/28 10:49:52 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:03:10 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ void putstr_count(char *str, t_data *data)
     if (data->width > len)
         pad = data->width - len;
 
+	// printStruct(data);
+
 	if (!data->right_allign && is_neg)
 		putchar_count('-', data);
-	else if (data->right_allign && is_neg)
+	else if ((data->right_allign && is_neg) && (data->width >= 0 || data->width_prec > 0))
 		putchar_count('-', data);
 
     if (data->right_allign && pad > 0)

@@ -125,7 +125,22 @@ int main()
 	// printf("%d\n", printf("%1s", ""));
 	// printf("%d\n", ft_printf("%1s", ""));
 
-	printf("%d\n", printf(" %.s ", "-"));
-	printf("%d\n", ft_printf(" %.s ", "-"));
+	// printf("%d\n", printf(" %.s ", "-"));
+	// printf("%d\n", ft_printf(" %.s ", "-"));
+
+	// printf("%d\n", printf(" %01d ", -9));
+	// printf("%d\n", ft_printf(" %01d ", -9));
+
+	// printf("%d\n", printf(" %.2s %.1s ", "", "-"));
+	// printf("%d\n", ft_printf(" %.2s %.1s ", "", "-"));
+
+	// printf("%d\n", printf(" %.1s ", "-"));
+	// printf("%d\n", ft_printf(" %.1s ", "-"));
+
+	// printf("%d\n", printf(" %.1s %.2s %.3s %.4s ", " - ", "", "4", ""));
+	// printf("%d\n", ft_printf(" %.1s %.2s %.3s %.4s ", " - ", "", "4", ""));
+
+	printf("%d\n", printf(" %.1s ", " - "));
+	printf("%d\n", ft_printf(" %.1s ", " - "));
 
 }
