@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdarg.h>
-#include "src/libft/inc/libft.h"
+#include "inc/libft.h"
 #include <limits.h>
 int main()
 {
@@ -142,5 +142,6 @@ int main()
 
 	printf("%d\n", printf(" %.1s ", " - "));
 	printf("%d\n", ft_printf(" %.1s ", " - "));
+
 
 }

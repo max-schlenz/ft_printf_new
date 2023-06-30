@@ -6,73 +6,93 @@
 #    By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 12:57:52 by mschlenz          #+#    #+#              #
-#    Updated: 2023/06/26 12:38:12 by mschlenz         ###   ########.fr        #
+#    Updated: 2023/06/30 08:22:35 by mschlenz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+MAKEFLAGS =	--no-print-directory
+SHELL 			=	/bin/bash
+
+
 #FORMAT----------------------------------#
-DEFCL	=	$(shell echo -e "\033[0m")
-RED		=	$(shell echo -e "\033[0;31m")
-LBLUE	=	$(shell echo -e "\033[1;34m")
-LCYAN	=	$(shell echo -e "\033[1;36m")
-PURPLE	=	$(shell echo -e "\033[0;35m")
+DEFCL			=	$(shell echo -e "\033[0m")
+RED				=	$(shell echo -e "\033[0;31m")
+GREEN			=	$(shell echo -e "\033[0;32m")
+BGREEN			=	$(shell echo -e "\033[1;32m")
+YELLOW			=	$(shell echo -e "\033[0;33m")
+BLUE			=	$(shell echo -e "\033[0;34m")
+BBLUE			=	$(shell echo -e "\033[1;34m")
+PURPLE			=	$(shell echo -e "\033[0;35m")
+CYAN			=	$(shell echo -e "\033[0;36m")
+BCYAN			=	$(shell echo -e "\033[1;36m")
+GRAY			=	$(shell echo -e "\033[0m\033[38;5;239m")
+DEL_R			=	\033[K
 # ---------------------------------------#
 
-NAME			=	libftprintf.a
 
-SRC_DIR			=	src
-OBJ_DIR			=	obj
-LIB_DIR			=	lib
+NAME 	=	libftprintf.a
 
-SRC				= 	$(NAME)
+INC_DIR		=	inc/
+SRC_DIR		=	src/
+OBJ_DIR		=	obj/
+LIB_DIR		=	../../../../
 
-LIB				=	libft 
+SRC			= 	libft/ft_calloc \
+				libft/ft_isdigit \
+				libft/ft_itoa \
+				libft/ft_memset \
+				libft/ft_strjoin \
+				libft/ft_strlen \
+				libft/ft_tolower \
+				libft/ft_bzero \
+				libft/ft_strdup \
+				ft_printf \
+				char \
+				hex \
+				int \
+				ptr \
+				string \
+				uint \
+				utils \
+				uitoa \
+				bonus/padding
 
-SRC_FILES		=	$(addsuffix .c, $(addprefix $(SRC_DIR)/, $(SRC)))
-LIB_FILES		=	$(addsuffix .a, $(addprefix $(LIB_DIR)/, $(LIB)))
-OBJ_FILES		=	$(addsuffix .o, $(addprefix $(OBJ_DIR)/, $(SRC)))
+SRC_PATH	=	$(addsuffix .c, $(addprefix $(SRC_DIR), $(SRC)))
+OBJ_FILES	=	$(addsuffix .o, $(addprefix $(OBJ_DIR), $(SRC)))
 
-INCLUDES		= 	-I src/libft/inc/
-LINKER			=	-L ./ -l ftprintf
-FLAGS			= 	#-fsanitize=address -g #-Wall -Wextra -Werror
+FLAGS		=	-g #-Wall -Wextra -Werror
+INCLUDES	= 	-I $(INC_DIR)
 
-all: $(LIB_FILES)
+all: create_dirs 
+	@$(MAKE) -j $(NAME) 
+
+r: all
+	@$(CC) main.c $(NAME)
+	@./a.out
 
 bonus: all
 
-exec: $(NAME)
+$(NAME): $(OBJ_FILES)
+	@ar -rcs $(NAME) $^
 
-$(LIB_FILES):
-	@make -C src/libft
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c
+	$(CC) $(FLAGS) -o $@ $(INCLUDES) -c $< 
 
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@gcc $(FLAGS) $(INCLUDES) -c $< -o $@
-
-$(NAME): $(LIB_FILES) $(OBJ_DIR) $(OBJ_FILES) message
-	@gcc $(FLAGS) $(INCLUDES) $(LINKER) $(OBJ_FILES) -o $(NAME)
-
-
-.INTERMEDIATE: message
-
-message:
-	@echo "${DEFCL}compiling ${LCYAN}${NAME}${DEFCL}..."
+create_dirs: $(OBJ_DIR)/bonus $(OBJ_DIR)/libft
+	@mkdir -p $(OBJ_DIR)/bonus
+	@mkdir -p $(OBJ_DIR)/libft
 
 clean:
-	@make clean -C src/libft
-	@if [ -f "${NAME}" ]; then \
-		echo "${PURPLE}removing ${LCYAN}${NAME}${PURPLE} binary file...${DEFCL}"; \
-		rm -f ${NAME}; \
-	fi
-	@if find ${OBJ_FILES} > /dev/null 2>&1; then \
-		echo "${PURPLE}removing ${LCYAN}${NAME}${PURPLE} object files...${DEFCL}"; \
-		rm -f $(OBJ_FILES); \
+	@if [[ -n `find $(OBJ_DIR) -type f -name '*.o'` ]]; then \
+		echo "${PURPLE}removing ${LBLUE}ft_printf${PURPLE} object files...${DEFCL}"; \
+		find $(OBJ_DIR) -type f -name '*.o' -delete; \
 	fi
 
 fclean: clean
-	@make fclean -C src/libft
+	@if [ -f "libftprintf.a" ]; then \
+		echo "${PURPLE}removing ${LBLUE}ft_printf${PURPLE} library file...${DEFCL}"; \
+		rm -f libftprintf.a; \
+	fi
 
 re: fclean all
 
