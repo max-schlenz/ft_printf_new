@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:13:22 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/30 08:18:31 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/30 10:49:05 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	putchar_count(char c, t_data *data)
 	data->count_chars++;
 }
 
-void putstr_count(char *str, t_data *data)
+void putstr_count(char *str, t_data *data, bool is_numeric)
 {
     int len = ft_strlen(str);
     int pad = 0;
@@ -38,12 +38,8 @@ void putstr_count(char *str, t_data *data)
 		data->width--;
 	}
 
-	// printStruct(data);
-
     if (data->width > len)
         pad = data->width - len;
-
-	// printStruct(data);
 
 	if (!data->right_allign && is_neg)
 		putchar_count('-', data);
@@ -52,25 +48,26 @@ void putstr_count(char *str, t_data *data)
 
     if (data->right_allign && pad > 0)
     {
-		
-	
         while (pad--)
         {
-            if (data->zero_pad)
+            if (data->zero_pad && is_numeric)
                 putchar_count('0', data);
             else
                 putchar_count(' ', data);
         }
     }
 
-    if (data->precision && data->width_prec > len)
-    {
-        int precision_pad = data->width_prec - len;
-        while (precision_pad--)
-            putchar_count('0', data);
-    }
+    // if (data->precision && data->width_prec > len)
+    // {
+    //     int precision_pad = data->width_prec - len;
+    //     while (precision_pad--)
+    //         putchar_count('0', data);
+    // }
 
-    while (*str)
+	if (data->precision && len > data->width_prec)
+        len = data->width_prec;
+
+    while (len--)
         putchar_count(*str++, data);
 
     if (data->left_allign && pad > 0)
@@ -82,6 +79,7 @@ void putstr_count(char *str, t_data *data)
 
 void	printStruct(t_data *data)
 {
+	printf("DATA: \n");
 	printf("count_chars: %u\n", data->count_chars);
 	printf("left_allign: %s\n", data->left_allign ? "true" : "false");
 	printf("right_allign: %s\n", data->right_allign ? "true" : "false");
@@ -90,6 +88,7 @@ void	printStruct(t_data *data)
 	printf("hash: %s\n", data->hash ? "true" : "false");
 	printf("width_prec: %d\n", data->width_prec);
 	printf("width: %d\n", data->width);
+	printf("\n");
 }
 
 long	ft_atol(const char *str)

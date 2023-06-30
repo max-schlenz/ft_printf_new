@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:13:31 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/27 12:51:20 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/30 10:36:57 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	mod_ptr(t_data *data)
 		str = ptr_to_hex(arg, 1);
 		if (str)
 		{
-			putstr_count(str, data);
+			putstr_count(str, data, false);
 			free(str);
 		}
 	}

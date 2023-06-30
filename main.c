@@ -134,14 +134,19 @@ int main()
 	// printf("%d\n", printf(" %.2s %.1s ", "", "-"));
 	// printf("%d\n", ft_printf(" %.2s %.1s ", "", "-"));
 
-	// printf("%d\n", printf(" %.1s ", "-"));
-	// printf("%d\n", ft_printf(" %.1s ", "-"));
+	printf("%d\n", printf(" %.1s ", "-"));
+	printf("%d\n", ft_printf(" %.1s ", "-"));
 
-	// printf("%d\n", printf(" %.1s %.2s %.3s %.4s ", " - ", "", "4", ""));
-	// printf("%d\n", ft_printf(" %.1s %.2s %.3s %.4s ", " - ", "", "4", ""));
+	printf("%d\n", printf(" %.1s %.2s %.3s %.4s ", " - ", "", "4", ""));
+	printf("%d\n", ft_printf(" %.1s %.2s %.3s %.4s ", " - ", "", "4", ""));
 
-	printf("%d\n", printf(" %.1s ", " - "));
-	printf("%d\n", ft_printf(" %.1s ", " - "));
+	printf("%d\n", printf("| %.1s |", " - "));
+	printf("%d\n", ft_printf("| %.1s |", " - "));
 
+	printf("%d\n", printf("| %.1s|", ""));
+	printf("%d\n", ft_printf("| %.1s|", ""));
+
+	printf("%d\n", printf(" %.2d ", -1));
+	printf("%d\n", ft_printf(" %.2d ", -1));
 
 }

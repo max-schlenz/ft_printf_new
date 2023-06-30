@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:19:14 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/28 09:52:07 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/30 10:36:48 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,13 @@ void mod_hex(t_data *data, bool uppercase)
             free(temp);
         }
 
-        putstr_count(str, data);
+        putstr_count(str, data, false);
         free(str);
     }
     else if (!to_hex)
     {
         // If the number is 0, output 0 with putstr_count to handle padding and field width
-        putstr_count("0", data);
+        putstr_count("0", data, false);
     }
 }
 

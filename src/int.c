@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:13:34 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/28 10:42:12 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/30 10:48:53 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void mod_int(t_data *data)
 		arg *= -1;
 		is_neg = true;
 	}
-
-	// printStruct(data);
 	
     if (arg == 0 && data->precision && data->width_prec == 0)
         str = ft_strdup("");
@@ -43,8 +41,23 @@ void mod_int(t_data *data)
 			tmp = ft_strjoin("-", str);
 			free(str);
 			str = tmp;
+			// printf("%d\n", ft_strlen(str));
+				// data->width_prec-- ;
+			
 		}
-        putstr_count(str, data);
+		int len = ft_strlen(str);
+       	if (data->precision && data->width_prec >= len)
+		{
+            int precision_pad;
+            if (is_neg)
+                precision_pad = data->width_prec - len + 1;
+            else
+                precision_pad = data->width_prec - len;
+            
+            while (precision_pad--)
+                putchar_count('0', data);
+        }
+        putstr_count(str, data, true);
         free(str);
     }
 }

@@ -6,7 +6,7 @@
 /*   By: mschlenz <mschlenz@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 08:13:29 by mschlenz          #+#    #+#             */
-/*   Updated: 2023/06/26 14:11:10 by mschlenz         ###   ########.fr       */
+/*   Updated: 2023/06/30 10:37:05 by mschlenz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	mod_string(t_data *data)
 	arg = va_arg(data->args, char *);
 	data->zero_pad = false;
 	if (arg)
-		putstr_count(arg, data);
+		putstr_count(arg, data, false);
 	else
-		putstr_count("(null)", data);
+		putstr_count("(null)", data, false);
 }
